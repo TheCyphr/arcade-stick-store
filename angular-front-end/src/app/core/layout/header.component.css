@@ -1,0 +1,8 @@
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+    background: cornflowerblue;
+    font-size: 2rem;
+    color: white;
+}
