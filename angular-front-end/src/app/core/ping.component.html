@@ -1,0 +1,6 @@
+<ng-container *ngIf="pingResult; else button">
+    {{pingResult}}
+</ng-container>
+<ng-template #button>
+    <button (click)="pingServer()">Ping</button>
+</ng-template>

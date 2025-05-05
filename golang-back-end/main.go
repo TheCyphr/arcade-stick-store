@@ -15,9 +15,16 @@ type PingResponse struct {
 func setupRouter(pr *database.ProductRepo) *gin.Engine {
 	r := gin.Default()
 
-	// Add request header to prevent CORS errors
 	r.Use(func(c *gin.Context) {
+		// Add CORS configuration
 		c.Header("Access-Control-Allow-Origin", "http://localhost:5173")
+		c.Header("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Header("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
 	})
 
 	r.GET("/ping", func(c *gin.Context) {
